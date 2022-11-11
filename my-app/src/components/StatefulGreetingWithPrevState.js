@@ -11,19 +11,24 @@ class StatefulGreetingWithPrevState extends React.Component{
     }
 
     handleClick() {
-        this.setState({
-            introduction: this.state.introduction === 'Hello' ? 'Goodbye' : 'Hello',
-            buttonText: this.state.buttonText === 'Exit' ? 'Enter': 'Exit',
-        }, () => {
-            console.log(this.state.introduction);
-            console.log(this.state.buttonText); 
+        this.setState((prevState, prevProps) => {
+            console.log('previous state:', prevState);
+            console.log('previous props:', prevProps);
+            return {
+                introduction: prevState.introduction === 'Hello' ? 'Goodbye': 'Hello',
+                buttonText: prevState.buttonText === 'Exit' ? 'Enter': 'Exit',
+            }
         })
     }
 
-    incrementClick() {
-        this.setState({
-            count: this.state.count += 1,
-        })
+    increment() {
+        this.setState((prevState, prevProps) => {
+            console.log('previous state:', prevState);
+            console.log('previous props:', prevProps);
+            return {
+                count: prevState.count + 1
+            }
+        });
     }
 
     render() {
@@ -32,7 +37,7 @@ class StatefulGreetingWithPrevState extends React.Component{
                 <h1>{this.state.introduction} {this.props.name},
                 {this.props.greeting}</h1>
                 <button onClick={() => this.handleClick()}>{this.state.buttonText}</button>
-                <button onClick={() => this.incrementClick()}>Increment</button>
+                <button onClick={() => this.increment()}>Increment</button>
                 <h4>You've clicked {this.state.count} times!</h4>
             </div>
         )
