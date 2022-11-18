@@ -11,11 +11,13 @@ function UseEffectCounter() {
     useEffect(() => {
         console.log('creating timer');
         const interval = setInterval(() => {
+            console.log('interval executed')
             setTime(time => time + 1)
         }, 1000);
         // return statement below stops the timer incrementing by 2 instead of 1, this happens in development mode because react runs 
         // in strict mode therfore certain functions/intervals run twice for some reason..
         return () => {
+            console.log('cleaning up!')
             clearInterval(interval);
         };
     // Passing an empty array below tells the useEffect function to run only once when the page firsts mounts/loads.
