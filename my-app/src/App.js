@@ -18,11 +18,12 @@ import './App.css';
 // import LifeCyclesCWU from './components/LifeCyclesCWU';
 // import ControlledForms from './components/ControlledForms';
 // import UncontrolledForms from './components/UncontrolledForm';
-import SearchBar from './components/SearchBar';
+// import SearchBar from './components/SearchBar';
+import ControlledFormHooks from './components/ControlledFormHooks';
 function App() {
   return (
     <div className="App">
-      <SearchBar />
+      <ControlledFormHooks />
     </div>
   );
 }
